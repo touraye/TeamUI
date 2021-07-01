@@ -1,0 +1,40 @@
+.root {
+    -fx-background-color: #585858;
+    -fx-font-size: 11pt;
+    -fx-text-fill: white;
+}
+
+.button {
+    -fx-text-fill: #282828;
+    -fx-font-size: 13pt;
+    -fx-padding: 5 12;
+    -fx-background-radius: 5;
+    -fx-font-weight: bold;
+}
+
+#menu {
+    -fx-background-color: #7CAFC2;
+    -fx-padding: 7;
+    -fx-text-alignment: center;
+    -fx-text-color: "black";
+}
+
+.label {
+    -fx-text-fill: "white";
+}
+
+//navbar color #7cafc2
+.menuLayout {
+    -fx-background-color: #7CAFC2;
+}
+
+//league table
+table {
+    -fx-text-fill: 'white';
+}
+
+#footer {
+    -fx-background-color: #282828;
+    -fx-font-size: 10pt;
+    -fx-padding: 8;
+}

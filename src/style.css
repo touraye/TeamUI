@@ -2,6 +2,13 @@
     -fx-background-color: #585858;
     -fx-font-size: 11pt;
     -fx-text-fill: white;
+    -fx-background-image: url("assets/main.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: stretch;
+}
+
+HBox  {
+    -fx-alignment: center;
 }
 
 .button {
@@ -12,6 +19,10 @@
     -fx-font-weight: bold;
 }
 
+#addTrophyBtn {
+    -fx-text-fill: black;
+}
+
 #menu {
     -fx-background-color: #7CAFC2;
     -fx-padding: 7;
@@ -20,12 +31,24 @@
 }
 
 .label {
-    -fx-text-fill: "white";
+
+}
+
+//UI labels
+#lblBtn {
+    -fx-text-fill: white;
+    -fx-padding: 14;
 }
 
 //navbar color #7cafc2
 .menuLayout {
     -fx-background-color: #7CAFC2;
+}
+
+//Welcome Note
+#main {
+    -fx-text-fill: white;
+    -fx-font-size: 15pt;
 }
 
 //league table
@@ -35,6 +58,11 @@ table {
 
 #footer {
     -fx-background-color: #282828;
-    -fx-font-size: 10pt;
-    -fx-padding: 8;
+    -fx-text-center: center;
+}
+
+#footLbl {
+    -fx-text-fill: white;
+    -fx-font-size: 13pt;
+    -fx-padding: 15;
 }

@@ -1,6 +1,7 @@
 package database;
 
 import java.sql.*;
+import java.time.LocalDate;
 
 public class Database {
     private Statement statement;
@@ -18,7 +19,7 @@ public class Database {
     }
 
     //Create League
-    public void createLeague(String name, String category, String start_date, String end_date){
+    public void createLeague(String name, String category, LocalDate start_date, LocalDate end_date){
         try{
             String insertQuery = "INSERT INTO league(name, category, league_start_date, league_end_date) values('"+name+"', '"+category+"', '"+start_date+"', '"+end_date+"')";
             this.statement.execute(insertQuery);

@@ -15,6 +15,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+import java.time.LocalDate;
+
 public class Dashboard {
     public Scene dashboard(){
         BorderPane dashboardLayout = new BorderPane();
@@ -134,6 +136,7 @@ public class Dashboard {
         MenuItem viewTrophy = new MenuItem("View Trophy");
         MenuItem editTrophy = new MenuItem("Edit Trophy");
         MenuItem delTrophy = new MenuItem("Delete Trophy");
+        addTrophy.setId("addTrophyBtn");
 //        Button addTrophy = new Button("Add Trophy");
 //        Button viewTrophy = new Button("View Trophy");
 //        Button editTrophy = new Button("Edit Trophy");
@@ -149,11 +152,16 @@ public class Dashboard {
 
         //main
         Label mainContent = new Label("Welcome To My League App!");
+        mainContent.setId("main");
+
 
         //footer
         Label sign = new Label("GFA");
+        sign.setId("footLbl");
         Label dev = new Label("</> By Pa Ebou");
+        dev.setId("footLbl");
         HBox footerContent = new HBox(180);
+        footerContent.setId("footer");
         footerContent.getChildren().addAll(sign, dev);
         footerContent.setId("footer");
 
@@ -164,6 +172,7 @@ public class Dashboard {
 
         //set scene
         Scene dashboardScene = new Scene(dashboardLayout, 1500,800);
+
         dashboardScene.getStylesheets().add("style.css");
         //Todo return the scene
         return dashboardScene;
@@ -177,6 +186,7 @@ public class Dashboard {
         HBox teamNameLayout = new HBox(30);
         teamNameLayout.setAlignment(Pos.CENTER);
         Label teamNameLbl = new Label("Team Name");
+        teamNameLbl.setId("lblBtn");
         TextField teamNameFld = new TextField();
         teamNameFld.setPromptText("jam city f-c");
         teamNameLayout.getChildren().addAll(teamNameLbl, teamNameFld);
@@ -184,8 +194,10 @@ public class Dashboard {
         HBox foundYearLayout = new HBox(30);
         foundYearLayout.setAlignment(Pos.CENTER);
         Label foundYearLbl = new Label("Found Year");
-        TextField foundYearFld = new TextField();
-        foundYearFld.setPromptText("2021-02-22 22:55:05");
+        foundYearLbl.setId("lblBtn");
+//        TextField foundYearFld = new TextField();
+        DatePicker foundYearFld = new DatePicker();
+//        foundYearFld.setPromptText("2021-02-22 22:55:05");
         foundYearLayout.getChildren().addAll(foundYearLbl, foundYearFld);
 
         HBox leagueLayout = new HBox(30);
@@ -233,15 +245,18 @@ public class Dashboard {
         HBox leagueStartDateLayout = new HBox(30);
         leagueStartDateLayout.setAlignment(Pos.CENTER);
         Label leagueStartDateLbl = new Label("League Start Date");
-        TextField leagueStartDateFld = new TextField();
-        leagueStartDateFld.setPromptText("2021-06-15 03:00:00");
+//        TextField leagueStartDateFld = new TextField();
+        DatePicker leagueStartDateFld = new DatePicker();
+//        leagueStartDateFld.setPromptText("2021-06-15 03:00:00");
+//        DatePicker leagueEndDateFld = new DatePicker();
         leagueStartDateLayout.getChildren().addAll(leagueStartDateLbl, leagueStartDateFld);
 
         HBox leagueEndDateLayout = new HBox(30);
         leagueEndDateLayout.setAlignment(Pos.CENTER);
         Label leagueEndDateLbl = new Label("League Start Date");
-        TextField leagueEndDateFld = new TextField();
-        leagueEndDateFld.setPromptText("2021-06-15 03:00:00");
+        DatePicker leagueEndDateFld = new DatePicker();
+//        TextField leagueEndDateFld = new TextField();
+//        leagueEndDateFld.setPromptText("2021-06-15 03:00:00");
         leagueEndDateLayout.getChildren().addAll(leagueEndDateLbl, leagueEndDateFld);
 
         Label handleMsg = new Label();
@@ -249,16 +264,16 @@ public class Dashboard {
         addBtn.setOnAction(e->{
             String name = leagueNameLbl.getText();
             String category = leagueCategoryFld.getText();
-            String startDate = leagueStartDateFld.getText();
-            String endDate = leagueEndDateFld.getText();
+            LocalDate startDate = leagueStartDateFld.getValue();
+            LocalDate endDate = leagueEndDateFld.getValue();
             //Check for all fields
-            if(name.length() != 0 && category.length() != 0 && startDate.length() != 0 && endDate.length() != 0){
+            if(name.length() != 0 && category.length()  != 0){
                 Database newLeague = new Database();
-                newLeague.createLeague(leagueNameFld.getText(), leagueCategoryFld.getText(), leagueStartDateFld.getText(), leagueEndDateFld.getText());
+                newLeague.createLeague(leagueNameFld.getText(), leagueCategoryFld.getText(), leagueStartDateFld.getValue(), leagueEndDateFld.getValue());
                 leagueNameFld.setText("");
                 leagueCategoryFld.setText("");
-                leagueStartDateFld.setText("");
-                leagueEndDateFld.setText("");
+                leagueStartDateFld.setValue(startDate);
+                leagueEndDateFld.setValue(endDate);
                 handleMsg.setText("League Created");
             } else {
                 handleMsg.setText("All Fields are Required.. Try Adding Again");
